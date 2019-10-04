@@ -10,7 +10,10 @@
         {{$post->descricao}}
     </div>
 
-    @include('comments.create')
-
-    @include('comments.show')
+    @isset($comment)
+        @include('comments.edit')
+    @else
+        @include('comments.create')
+    @endisset
+    @include('comments.index')
 @endsection

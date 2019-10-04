@@ -60,6 +60,9 @@ class CommentController extends Controller
     public function edit(Comment $comment)
     {
         //
+        $post = $comment->post;
+        return view('posts.show', compact('post', 'comment'));
+
     }
 
     /**
@@ -72,6 +75,10 @@ class CommentController extends Controller
     public function update(Request $request, Comment $comment)
     {
         //
+
+        $comment->comentario = $request->input('comentario');
+        $comment->update();
+        return redirect('/posts/'.$comment->post_id);
     }
 
     /**
